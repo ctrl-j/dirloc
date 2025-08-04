@@ -1,6 +1,24 @@
 # DIRLOC (Directory Lines Of Code)
 Count the number of ACTUAL lines of code in a directory, excluding things like comments, whitespace, and semantic trivialities that do not contribute to the actual operation of your code. While it defaults to reading C/C++ files, support for other languages is in the works. (hopefully that won't take long because it's pretty simple, lol)
 
+## Requirements:
+- Qt 6.9.1 libraries. *This dependency will be refactored soon, it is just a byproduct of my development environment.*
+- A compiler that supports C++20
+- CMake >= v3.19
+
+
+## How to build:
+1. Clone this repository to your machine, or download it as a .zip and extract the contents to a folder.
+2. In the terminal, enter the directory in which you cloned or downloaded the repository.
+	
+ 	```cd ./dirloc```
+3. Create a directory named "build" and then enter it.
+	
+ 	```mkdir build && cd ./build```
+4. Run cmake to build the program. The executable should appear in "dirloc/build"
+	
+ 	```cmake -S .. -B . --target all```
+
 ## Purpose:
 This tool exists purely for fun; it isn't meant to give any legitimate qualitative insight into your code. What it IS meant for is to give the programmer some insight into how the length of their code is changing throughout the program's development, and evoke some reflection on the amount of "work" they have done. This measure is purely relative to each programmer, and the satisfaction you extract from the numbers growing or shrinking is up to you.
 
