@@ -50,6 +50,8 @@ dirloc::dirloc(str _searchPath, DIRLOC_FLAG _mode, FILESET _fileset, bool _print
 
     // Set members
     tloc = 0;
+    tskips = 0;
+    graph_limit = 50;
     mode = _mode;
     fileset = _fileset;
     print_skips = _print_skips;
@@ -193,6 +195,14 @@ void dirloc::findFiles() {
 }
 
 void dirloc::printResults() {
+    // Print the "tokens" being ignored
+    std::cout << "Skipping lines that end with ";
+    for (int i = 0; i < SKIP.size() - 1; i++) {
+        std::cout << "\"" << SKIP[i] << "\", ";
+    }
+    std::cout << "\"" << SKIP[SKIP.size() - 1] << "\"\n\n";
+
+
     if (mode == CLI_NONE) printLOCFiletypes();
     else if (mode == CLI_GRAPH) printGraphs();
     else {
@@ -203,18 +213,85 @@ void dirloc::printResults() {
 }
 
 void dirloc::printGraphs() {
-    // TODO ... ... ... ... ...
-    std::cout << "*** TODO ... ... ... ... ... ***\n";
+    // For each file in "fpaths",
+    for (str &e : exts) {
+        flvec toPrint(0);
+        // Check if it matches current extension
+        for (fpext &fp : fpaths) {
+            if (std::get<1>(fp) == e) {
+                str fname = std::get<0>(fp).filename();
+                uint32_t loc = std::get<2>(fp);
+                uint32_t skips = std::get<3>(fp);
+                tskips += skips;
+                toPrint.push_back(fileloc(loc, fname, skips));
+            }
+        }
+        // Only print this filetype if some were found
+        if (toPrint.size() > 0) {
+            std::cout << e << " files:\n";
+            uint64_t tlocExt = 0;
+            uint64_t skipsExt = 0;
+
+            // Find the file with most LOC and most skips
+            uint32_t maxLOC = 0;
+            uint32_t maxSkips = 0;
+            fileloc fileMostLOC;
+            fileloc fileMostSkips;
+            for (int i = 0; i < toPrint.size(); i++) {
+                fileloc p = toPrint[i];
+                if (std::get<0>(p) > maxLOC) {
+                    maxLOC = std::get<0>(p);
+                    fileMostLOC = p;
+                }
+                if (std::get<2>(p) > maxSkips) {
+                    maxSkips = std::get<2>(p);
+                    fileMostSkips = p;
+                }
+            }
+
+            // For each file to print,
+            for (int i = 0; i < toPrint.size(); i++) {
+                fileloc p = toPrint[i];
+
+                // Print the filename, LOC, and (optionally) skips
+                std::cout << "\t" << std::get<1>(p)
+                          << " [" << std::get<0>(p)
+                          << " LOC";
+                if (print_skips) {
+                    std::cout << ", " << std::get<2>(p) << " skips]\n";
+                } else {
+                    std::cout << "]\n";
+                }
+
+                // Print graph for # of LOC, scaled based on highest LOC count
+                str gs = "\t\t";
+                if (std::get<1>(p) == std::get<1>(fileMostLOC)) {
+                    gs.append(graph_limit, '#');
+                } else {
+                    uint32_t loc = std::get<0>(p);
+                    int len = ((long double)loc / (long double)maxLOC) * 50.0f;
+                    gs.append(len, '#');
+                }
+                std::cout << gs << "\n";
+
+                // Print graph for # of skips, scaled based on highest skip count
+                if (print_skips) {
+                    str gss = "\t\t";
+                    if (std::get<1>(p) == std::get<1>(fileMostSkips)) {
+                        gss.append(graph_limit, '$');
+                    } else {
+                        uint32_t skips = std::get<2>(p);
+                        int len = ((long double)skips / (long double)maxSkips) * 50.0f;
+                        gss.append(len, '$');
+                    }
+                    std::cout << gss << "\n";
+                }
+            }
+        }
+    }
 }
 
 void dirloc::printLOCFiletypes() {
-    // Print the "tokens" being ignored
-    std::cout << "Skipping lines that end with ";
-    for (int i = 0; i < SKIP.size(); i++) {
-        std::cout << "\"" << SKIP[i] << "\", ";
-    }
-    std::cout << "\"" << SKIP[SKIP.size() - 1] << "\"\n\n";
-
     // For each file in "fpaths",
     uint64_t tskips = 0;
     for (str &e : exts) {

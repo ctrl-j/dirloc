@@ -37,8 +37,10 @@ private:
     fpextvec fpaths;
     fpath searchPath;
     uint64_t tloc;
+    uint64_t tskips;
 
     bool print_skips;
+    int graph_limit;
 
     static QRegularExpression rgxNewline;
     static QRegularExpression rgxOBrace;
