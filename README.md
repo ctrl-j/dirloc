@@ -1,9 +1,9 @@
 # DIRLOC (Directory Lines Of Code)
 Count the number of ACTUAL lines of code in a directory, excluding things like comments, whitespace, and semantic trivialities that do not contribute to the actual operation of your code. While it defaults to reading C/C++ files, support for other languages is in the works. (hopefully that won't take long because it's pretty simple, lol)
 
-## Requirements:
+## Build requirements:
 - Qt 6.9.1 libraries. *This dependency will be refactored soon, it is just a byproduct of my development environment.*
-- A compiler that supports C++20
+- A compiler that supports C++20 (GCC >= v13, clang >= v17, MSVC >= v16.11)
 - CMake >= v3.19
 
 
