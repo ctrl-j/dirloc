@@ -14,7 +14,7 @@ In general, the number of lines of code does NOT reflect the quality, complexity
 I for one take some satisfaction in seeing how the files in a project of mine grow and change as I flesh out more and more features that I have planned. On one day, it might be amusing to see how large some of my source files get as I insert more functionality. On another day, it might be satisfying to see the opposite, as I work on optimizing and shrinking a particularly verbose implementation.
 
 ## Examples of ignored "trivialities" (C/C++):
-(note: these examples are written in C++, but also apply to C programs)
+(note: these examples are written in C++, but their rules also apply to C programs)
 
 
 **Single- and multi-line comments**
