@@ -141,7 +141,8 @@ std::pair<int64_t, int64_t> dirloc::readLines(std::ifstream &ifs) {
 
         // Skip any comment lines
         if (line.starts_with("//") ||
-            line.starts_with("/*")) {
+            line.starts_with("/*") ||
+            line.starts_with("*")) {
             skips++;
             continue;
         }
