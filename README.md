@@ -17,7 +17,7 @@ Count the number of ACTUAL lines of code in a directory, excluding things like c
  	```mkdir build && cd ./build```
 4. Run cmake to build the program. The executable should appear in "dirloc/build"
 	
- 	```cmake -S .. -B .```
+ 	```cmake -S .. -B . --target all```
 
 ## Purpose:
 This tool exists purely for fun; it isn't meant to give any legitimate qualitative insight into your code. What it IS meant for is to give the programmer some insight into how the length of their code is changing throughout the program's development, and evoke some reflection on the amount of "work" they have done. This measure is purely relative to each programmer, and the satisfaction you extract from the numbers growing or shrinking is up to you.
