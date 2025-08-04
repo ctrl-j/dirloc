@@ -1,9 +1,0 @@
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/dirloc.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/edit_cache.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/rebuild_cache.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/list_install_components.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install/local.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/install/strip.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/dirloc_autogen_timestamp_deps.dir
-/home/rusty/dev/Dirloc/build/Desktop_Qt_6_9_1-Debug/CMakeFiles/dirloc_autogen.dir
