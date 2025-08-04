@@ -5,7 +5,7 @@ Count the number of ACTUAL lines of code in a directory, excluding things like c
 This tool exists purely for fun; it isn't meant to give any legitimate qualitative insight into your code. What it IS meant for is to give the programmer some insight into how the length of their code is changing throughout the program's development, and evoke some reflection on the amount of "work" they have done. This measure is purely relative to each programmer, and the satisfaction you extract from the numbers growing or shrinking is up to you.
 
 
-Another concept this tool might help with is the notion of splitting your code into multiple files. The usefulness and feasibility of this concept varies across languages, but in general it is a wise practice to keep your files from growing too large in size and scope.
+Another concept this tool might help with is the notion of splitting your code into multiple files. The usefulness and feasibility of this concept varies across languages, but in general it is a wise practice to keep your files from growing too large in scope and size.
 
 
 In general, the number of lines of code does NOT reflect the quality, complexity, or correctness of your program. A very long program might just be an over-engineered implementation of something very simple, and a very short program might do some convoluted multi-threaded operation that is abstracted away in another library.
